@@ -1,10 +1,7 @@
 <div align="center">
   <h1>:mortar_board: Tech Educators' SWD Bootcamp :mortar_board:<br/>:mortar_board: Week 07 Assessment :mortar_board:</h1>
     <p>
-      <a href="http://www.LinkedIn.com/in/kevin-barr1988">LinkedIn</a> |
-      <a href="http://kjb88.github.io">Website</a> |
-      <a href="mailto:kevinbarr.business@gmail.com">Email</a> |
-      <a href="https://github.com/KJB88">Github</a>
+    🌴<a href="https://linktr.ee/kjb88">Linktree</a>🌴
     </p>
   <p>
     Repository for coursework for TechEd Software Development Bootcamp - Week 07
