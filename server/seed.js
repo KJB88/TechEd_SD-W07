@@ -19,7 +19,7 @@ export default function seedFullDB(db)
 
     // Non-dependent tables (Order does not matter)
     populateFactions(db);
-   populateLocations(db);
+    populateLocations(db);
 
     // Dependent tables (Order matters)
     populateUsers(db);
@@ -27,6 +27,8 @@ export default function seedFullDB(db)
     populateComments(db);
 }
 
+/* Individual Seed Functions 
+NOTE: They are all await to lock IDs for testing. */
 // Factions
 // (name)
 async function populateFactions(db)
@@ -71,6 +73,7 @@ async function populateUsers(db)
     await db.query(insertUser, ["Strelok", "Master", 1, 4]); // 4
     await db.query(insertUser, ["Charon", "Master", 5, 10]); // 5
     await db.query(insertUser, ["Sidorovich", "Trader", 1, 3]); // 6
+    await db.query(insertUser, ["Wollivan", "Novice", 1, 5]); // 7
 
 }
 
@@ -101,16 +104,35 @@ await db.query(insertPost, [
 "Buying",
 3
 ]);
+
+// 4
+await db.query(insertPost, [
+    "New to the Zone!",
+"Hi guys, I'm new to the Zone! Does anyone have any tips? Also, is it normal to feel your brain tingle and hear a strange rock talking to you in your dreams?",
+"Advice",
+7
+]);
 }
 
 // Comments
 // (content, user_id, post_id)
 async function populateComments(db)
 {
+    // cID 1 by uID 1 on pID 3
     await db.query(insertComment, ["Pryvit bratan! Buckshot much better for trip outside village!", 1, 3]);
+
+    // cID 2 by uID 3 on pID 2
     await db.query(insertComment, ["Every day that ends where we're still breathing is a good day!", 3, 2]);
-    await db.query(insertComment, ["How do these guys still have network access? Is Sidorovich sleeping on the job again?", 2, 1]);
+
+    // cID 3 by uID 2 on pID 1
+    await db.query(insertComment, [
+        "How do these guys still have network access? Is Sidorovich sleeping on the job again?", 2, 1]);
+    
+    // cID 4 by uID 6 on pID 1
     await db.query(insertComment, ["If you don't like it, don't use it! Blyat!", 6, 1]);
+
+    // cID 5 by uID 1 on pID 4
+    await db.query(insertComment, ["Vodka, moy tovarisch! No tingle if no brain! Budmo!", 1, 4]);
 }
 
 async function DEBUG_nukeDB(db)
