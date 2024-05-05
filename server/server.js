@@ -1,37 +1,28 @@
 /* Server Main Entrypoint */
-/***** Config *****/
-import pg from "pg";
+/*******************/
+// #region Config
 import express from "express";
 import cors from "cors";
-import dotenv from "dotenv";
-
-// Use envVars
-dotenv.config();
+import dbInit from "./dbHandler.js";
 
 // Server config
 const app = express();
 app.use(cors());
 
-// DB connection
-const dbConnStr = process.env.DATABASE_URL;
-const db = new pg.Pool({connectionString: dbConnStr});
-
+// #endregion Config
+/*******************/
+// #region Routing - GET
 app.get("/users", (request, response) => {
     console.log("GET");
     
 });
+// #endregion Routing - GET
+/*******************/
+// #region Core
 // Server listener start
 app.listen(8080, () => {
     console.log("SERVER: Listening on 8080");
-    insert();
+    dbInit();
 });
-
-async function insert()
-{
-    const result = await db.query(
-        "INSERT INTO users (name, rank) VALUES ($1, $2) RETURNING *",
-        ["Kevin", "Master"]
-    );
-
-    console.log(result);
-}
+// #endregion Core
+/*******************/
