@@ -1,41 +1,20 @@
 import "./css/common.css";
 import "./css/core.css";
 import "./css/bodyMain.css";
-import ALink from "./ALink";
+import {Link} from "react-router-dom"
+import {metaFilters} from "./js/fetchLibrary.js"
 
 export default function Category() {
   const htmlFilters = metaFilters.map((filter) => (
-    <ALink
-      key={filter.innerText}
-      url={filter.url}
-      ariaLabel={filter.ariaLabel}
-      innerText={filter.innerText}
-    />
+
+    <Link key={filter.innerText} ari-label={filter.ariaLabel} to={filter.url}>
+      {filter.innerText}
+      </Link>
   ));
 
-  return <div id="tab-div">{htmlFilters}</div>;
+  return (
+  <div id="tab-div">
+    {htmlFilters}
+    </div>
+  )
 }
-
-// Storage array - could be a JSON to make it pure data too.
-const metaFilters = [
-  {
-    url: "/all",
-    ariaLabel: "No filter. Get all posts.",
-    innerText: "ALL",
-  },
-  {
-    url: "/new",
-    ariaLabel: "Filter by latest posts",
-    innerText: "NEW",
-  },
-  {
-    url: "/popular",
-    ariaLabel: "Filter by most likes",
-    innerText: "POPULAR",
-  },
-  {
-    url: "/tag",
-    ariaLabel: "Filter by tags",
-    innerText: "BY TAG",
-  },
-];

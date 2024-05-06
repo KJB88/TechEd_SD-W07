@@ -1,8 +1,7 @@
-const api = "https://teched-sd-w07-server.onrender.com"; //"http://localhost:8080/";
+const api = "https://teched-sd-w07-server.onrender.com"; //"http://localhost:8080/";//
 
 export async function fetchWithoutParam(request)
 {
-  console.log(`FETCHING: ${api}${request}`)
     const resp = await fetch(`${api}${request}`, {
         method: "GET",
         headers: {
@@ -12,7 +11,6 @@ export async function fetchWithoutParam(request)
 
         const data = await resp.json();
         console.log("GET response received.");
-        console.log(data);
         return data;
 }
 

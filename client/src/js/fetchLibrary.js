@@ -12,6 +12,11 @@ export const GET_POST_BY_POSTID = "/get/posts/by_post_id";
 export const GET_POSTS_BY_USERID = "/get/posts/by_user_id"
 export const GET_POSTS_BY_TAGID = "/get/posts/by_tag_id";
 
+// Get By Time
+export const GET_POSTS_BY_TIMESTAMP = "/get/posts/by_timestamp";
+
+// Get By Likes
+export const GET_POSTS_BY_MOST_LIKES = "/get/posts/by_likes";
 // Add
 export const ADD_USER = "/post/user";
 export const ADD_POST = "/post/post";
@@ -28,3 +33,31 @@ export const UPDATE_POST_LIKES_BY_POST_ID = "/put/post/by_post_id/likes"
 // Delete
 export const DEL_POST = "/del/post";
 
+// Storage array - could be a JSON to make it pure data too.
+export const metaFilters = [
+    {
+      url: "/all",
+      ariaLabel: "No filter. Get all posts.",
+      innerText: "ALL",
+      fetch: GET_ALL_POSTS
+    },
+    {
+      url: "/new",
+      ariaLabel: "Filter by latest posts",
+      innerText: "NEW",
+      fetch: GET_POSTS_BY_TIMESTAMP
+    },
+    {
+      url: "/popular",
+      ariaLabel: "Filter by most likes",
+      innerText: "POPULAR",
+      fetch: GET_POSTS_BY_MOST_LIKES
+    },
+    {
+      url: "/tag",
+      ariaLabel: "Filter by tags",
+      innerText: "BY TAG",
+      fetch: GET_POSTS_BY_TAGID
+    },
+  ];
+  
