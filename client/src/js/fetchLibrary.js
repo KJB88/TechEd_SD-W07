@@ -6,7 +6,7 @@ export const GET_ALL_FACTIONS = "get/factions/all";
 export const GET_ALL_TAGS = "get/tags/all";
 
 // Get by ID
-export const GET_USER_BY_NAME = "get/usrs/by_name"
+export const GET_USER_BY_NAME = "get/users/by_name"
 export const GET_USER_BY_USERID = "get/users/by_user_id";
 export const GET_POST_BY_POSTID = "get/posts/by_post_id";
 export const GET_POSTS_BY_USERID = "get/posts/by_user_id"

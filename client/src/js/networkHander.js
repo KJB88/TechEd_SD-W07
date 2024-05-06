@@ -1,6 +1,6 @@
 const api = "http://localhost:8080/";
 
-export async function fetchWithoutParam(request, successCallback, failureCallback)
+export async function fetchWithoutParam(request)
 {
   console.log(`FETCHING: ${api}${request}`)
     const resp = await fetch(`${api}${request}`, {
@@ -10,16 +10,13 @@ export async function fetchWithoutParam(request, successCallback, failureCallbac
           },
     });
 
-    if (resp.ok) {
         const data = await resp.json();
         console.log("GET response received.");
-        successCallback(data);
-      } else {
-        failureCallback("GET", resp.status);
-      }
+        console.log(data);
+        return data;
 }
 
-export async function fetchWithParam(request, param, successCallback, failureCallback)
+export async function fetchWithParam(request, param)
 {
   const resp = await fetch(`${api}${request}`, {
     method: "GET",
@@ -29,11 +26,18 @@ export async function fetchWithParam(request, param, successCallback, failureCal
       },
 });
 
-if (resp.ok) {
     const data = await resp.json();
     console.log("GET response received.");
-    successCallback(data);
-  } else {
-    failureCallback("GET", resp.status);
-  }
+    return data;
+}
+
+export async function post(request, body)
+{
+  await fetch(`${api}${request}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(body),
+  });
 }

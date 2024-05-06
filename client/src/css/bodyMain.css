@@ -8,7 +8,6 @@
   flex-flow: column nowrap;
   align-items: center;
   justify-content: flex-start;
-  backdrop-filter: blur(10px);
 }
 
 #tab-div {
@@ -37,10 +36,12 @@
   overflow-x: hidden;
   display: flex;
   flex-flow: column nowrap;
+  
   border: black 5px solid;
   border-radius: 100px;
   background-color: rgba(1, 1, 1, 0.25);
   box-shadow: inset 0px 0px 20px 20px rgba(1, 1, 1, 0.25);
+  backdrop-filter: blur(10px);
 }
 
 /* Dynamically created content */
@@ -63,16 +64,21 @@
   align-items: center;
   justify-content: flex-end;
   border-bottom: black 5px solid;
-  padding: 3.5px;
   padding-left: 5px;
 }
 
 .post-user-div img {
-    height: 75px;
-    width: 75px;
-    clip-path: circle(50%);
-    background-color: black;
+  height: 75px;
+  width: 75px;
+  clip-path: circle(50%);
+  background-color: black;
 }
+
+.faction-text{
+    text-align: center;
+    font-size: 14px;
+    width: 92.5%;
+  }
 
 .post-header-div {
   font-size: 18px;
@@ -80,8 +86,8 @@
   height: 100%;
   grid-column: 2;
   grid-row: 1;
-
   padding-left: 5px;
+  padding: 1px;
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
@@ -91,25 +97,58 @@
   border-bottom: black 5px solid;
 }
 
-.post-header-div span{
-    width: 92.5%;
+.post-header-div span {
+  width: 92.5%;
 }
 
 .post-content-div {
   width: 100%;
   height: 100%;
-  padding: 3.5px;
   padding-left: 5px;
+
   grid-column: 2;
   grid-row: 2;
   border-left: black 5px solid;
   border-bottom: black 5px solid;
 }
 
-.post-content-div p{
-    width: 97%;
-    height: 100%;
-    margin-left: -5px;
-    margin-top: -1px;
-    padding: 5px;
+.post-content-div p {
+  width: 97%;
+  height: 100%;
+  margin-left: -5px;
+  margin-top: -1px;
+  padding: 7.5px;
+}
+
+#post-form {
+  margin-top: 10px;
+  border-bottom: 3px black solid;
+  border-left: 3px black solid;
+  border-right: 3px black solid;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
+#post-form input {
+  margin-bottom: -1px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  margin-top: 5px;
+  width: 95%;
+}
+
+#post-form textarea {
+  width: 95%;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+#post-form button {
+  width: 50%;
+  margin-top: -1px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
 }

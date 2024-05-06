@@ -1,3 +1,4 @@
+
 import "./css/common.css"
 import "./css/core.css"
 import "./css/bodyMain.css"
@@ -24,23 +25,23 @@ export default function Category()
 // Storage array - could be a JSON to make it pure data too.
 const metaFilters = [
     {
-        url: "",
-        ariaLabel: ".",
+        url: "/all",
+        ariaLabel: "No filter. Get all posts.",
         innerText: "ALL"
     },
     {
-        url: "",
-        ariaLabel: "",
+        url: "/new",
+        ariaLabel: "Filter by latest posts",
         innerText: "NEW"
     },
     {
-        url: "",
-        ariaLabel: "",
+        url: "/popular",
+        ariaLabel: "Filter by most likes",
         innerText: "POPULAR"
     },
     {
-        url: "",
-        ariaLabel: "",
+        url: "/tag",
+        ariaLabel: "Filter by tags",
         innerText: "BY TAG"
     },
 ]
