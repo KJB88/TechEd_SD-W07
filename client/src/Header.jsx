@@ -1,7 +1,7 @@
 import "./css/core.css";
 import "./css/common.css";
 import "./css/header.css";
-import Nav from "./Nav.jsx";
+import Nav from "./Nav";
 
 export default function Header()
 {

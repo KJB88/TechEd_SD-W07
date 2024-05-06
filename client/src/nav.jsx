@@ -1,7 +1,6 @@
 import AnchorLink from "./AnchorLink";
 import "./css/header.css";
 
-// Nav
 export default function Nav() {
 
   const htmlLinks = personalLinks.map((link) => (
