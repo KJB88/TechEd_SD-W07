@@ -2,7 +2,7 @@
 import "./css/common.css"
 import "./css/core.css"
 import "./css/bodyMain.css"
-import AnchorLink from "./AnchorLink";
+import AnchorLink from "./ALink";
 
 export default function Category()
 {

@@ -1,10 +1,10 @@
-import AnchorLink from "./AnchorLink";
+import ALink from "./ALink";
 import "./css/header.css";
 
 export default function Nav() {
 
   const htmlLinks = personalLinks.map((link) => (
-    <AnchorLink
+    <ALink
       key={link.innerText}
       url={link.url}
       ariaLabel={link.ariaLabel}
