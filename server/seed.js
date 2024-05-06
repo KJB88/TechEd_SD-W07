@@ -72,8 +72,8 @@ async function populateLocations(db)
 async function populateUsers(db)
 {
     await db.query(insertUser, ["Vanderlust", "Veteran", 2, 1]); // 1
-    await db.query(insertUser, ["Cera Chornobyl", "Master", 1, 2]); // 2
-    await db.query(insertUser, ["Artyom Truthseeker", "Rookie", 3, 3]); // 3
+    await db.query(insertUser, ["Cera", "Master", 1, 2]); // 2
+    await db.query(insertUser, ["Artyom", "Rookie", 3, 3]); // 3
     await db.query(insertUser, ["Strelok", "Master", 1, 6]); // 4
     await db.query(insertUser, ["Charon", "Master", 5, 7]); // 5
     await db.query(insertUser, ["Sidorovich", "Trader", 1, 3]); // 6
