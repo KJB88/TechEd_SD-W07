@@ -1,4 +1,4 @@
-const api = "https://teched-sd-w07-server.onrender.com/";//"http://localhost:8080/";
+const api = "https://teched-sd-w07-server.onrender.com:8080/";//"http://localhost:8080/";
 
 export async function fetchWithoutParam(request)
 {
