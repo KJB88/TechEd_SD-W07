@@ -1,0 +1,17 @@
+/* Common */
+body{
+--drop-shadow-color: black;
+--drop-shadow-displacement: 2px 3px;
+}
+.drop-shadow {
+    filter: drop-shadow(var(--drop-shadow-color) var(--drop-shadow-displacement));
+  }
+  
+  .debug-border {
+    border: black 2px solid;
+  }
+  
+  .no-pointer-events
+  {
+    pointer-events: none;
+  }
