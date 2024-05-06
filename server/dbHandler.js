@@ -4,7 +4,7 @@
 import dotenv from "dotenv";
 import pg from "pg";
 import seedDB from "./seed.js";
-import { selectAllUsers } from "./queries.js";
+import { selectAllPosts, selectAllUsers, selectAllTags, selectAllFactions, selectAllLocations} from "./queries.js";
 // Use envVars
 dotenv.config();
 
@@ -26,5 +26,24 @@ export async function getAllUsers()
     return (await db.query(selectAllUsers)).rows;
 }
 
+export async function getAllPosts()
+{
+    return (await db.query(selectAllPosts)).rows;
+}
+
+export async function getAllTags()
+{
+    return (await db.query(selectAllTags)).rows;
+}
+
+export async function getAllFactions()
+{
+    return (await db.query(selectAllFactions)).rows;
+}
+
+export async function getAllLocations()
+{
+    return (await db.query(selectAllLocations)).rows;
+}
 // #endregion GET-SELECT routing
 /*******************/

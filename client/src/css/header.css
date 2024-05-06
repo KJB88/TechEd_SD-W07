@@ -1,14 +1,25 @@
 /* Header */
 header {
   height: auto;
-  width: 20%;
+  width: 17.5%;
   margin-left: 50%;
+  padding-bottom: 5px;
   transform: translateX(-50%);
+
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
   justify-content: center;
-  gap: 25px;
+  gap: 10px;
+
+  background-color: rgba(1, 1, 1, 0.45);
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-bottom: 5px black solid;
+  border-left: 5px black solid;
+  border-right: 5px black solid;
+  box-shadow: inset 0px 0px 5px 5px rgba(1, 1, 1, 0.25);
+  backdrop-filter: blur(10px);
 }
 
 /* Title */
@@ -44,7 +55,7 @@ nav ul {
   flex-flow: row nowrap;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+  gap: 10px;
 
   list-style: none;
 }

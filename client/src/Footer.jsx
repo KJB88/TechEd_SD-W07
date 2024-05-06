@@ -7,7 +7,7 @@ export default function Footer()
     return (
         <footer>
             <span className="drop-shadow">
-                All artwork, imagery and themery are from the S.T.A.L.K.E.R games, which are copyright of GSC Game World. Both S.T.A.L.K.E.R and GSC Game World are trademarks of GSC Game World.
+                All artwork, imagery and themery are from the <a href="https://store.steampowered.com/sub/35983/">S.T.A.L.K.E.R</a> games, which are copyright and trademarks of <a href="https://www.gsc-game.com/">GSC Game World</a>.
                 </span>
         </footer>
     )
