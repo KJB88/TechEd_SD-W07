@@ -44,17 +44,6 @@ export const selectPostsByUserID = {
     text: 'SELECT * FROM posts WHERE posts.user_id = $1'
 }
 
-// Comment(s) - by Post ID
-export const selectCommentsByPostID = {
-    name: 'selectCommentsByPostID',
-    text: 'SELECT * FROM comments WHERE comments.post_id = $1'
-}
-// Comment(s) - By User ID
-export const selectCommentsByUserID = {
-    name: 'selectCommentsByUserID',
-    text: 'SELECT * FROM comments WHERE comments.user_id = $1'
-}
-
 // Location(s) - All
 export const selectAllLocations = {
     name: 'selectAllLocations',
@@ -66,6 +55,19 @@ export const selectAllFactions = {
     name: 'selectAllFactions',
     text: 'SELECT * FROM factions'
 }
+
+// Tag(s) - All
+export const selectAllTags = {
+    name: 'selectAllTags',
+    text: 'SELECT * FROM tags'
+}
+
+// Tag - By Tag ID
+export const selectTagByTagID = {
+    name: 'selectTagByTagID',
+    text: 'SELECT * FROM tags WHERE tags.id = $1'
+}
+
 // #endregion Selects
 /*******************/
 // #region Inserts
@@ -91,15 +93,20 @@ export const insertLocation = {
 // Post
 export const insertPost = {
     name: 'insertPost',
-    text: 'INSERT INTO posts (header, content, tag, user_id) VALUES ($1, $2, $3, $4)'
+    text: 'INSERT INTO posts (header, content, tag_id, user_id) VALUES ($1, $2, $3, $4)'
 }
 
-// Comment
-export const insertComment = {
-    name: 'insertComment',
-    text: 'INSERT INTO comments (content, user_id, post_id) VALUES ($1, $2, $3)'
+// Tag
+export const insertTag = {
+    name: 'insertTag',
+    text: 'INSERT INTO tags (name) VALUES ($1)'
 }
+
 // #endregion Inserts
+/*******************/
+// #region Updates
+
+// #endregion Updates
 /*******************/
 // #region Deletes
 
@@ -112,7 +119,7 @@ text: 'TRUNCATE $1'
 // All Tables
 export const deleteAllRecordsInAllTables = {
     name: 'deleteAllRecordsInAllTables',
-    text: 'TRUNCATE users, posts, comments, factions, locations RESTART IDENTITY CASCADE'
+    text: 'TRUNCATE users, posts, factions, tags, locations RESTART IDENTITY CASCADE'
     }
 //#endregion Deletes
 /*******************/

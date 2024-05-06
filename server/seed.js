@@ -2,7 +2,7 @@
 /*******************/
 // #region Imports
 // Inserts
-import { insertFaction, insertLocation, insertPost, insertComment, insertUser } from "./queries.js";
+import { insertFaction, insertLocation, insertPost, insertTag, insertUser } from "./queries.js";
 
 // Deletes
 import { deleteAllRecordsInAllTables } from "./queries.js";
@@ -15,92 +15,103 @@ import { deleteAllRecordsInAllTables } from "./queries.js";
 export default async function seedFullDB(db)
 {
     // DEBUG - Erases all records in all tables but keeps schema
-    DEBUG_nukeDB(db);
+    await DEBUG_nukeDB(db);
 
     // Non-dependent tables (Order does not matter)
-    populateFactions(db);
-    populateLocations(db);
+    await populateTags(db);
+    await populateFactions(db);
+    await populateLocations(db);
 
     // Dependent tables (Order matters)
-    populateUsers(db);
-    populatePosts(db);
-    //populateComments(db);
+    await populateUsers(db);
+    await populatePosts(db);
 }
 
 /* Individual Seed Functions 
 NOTE: They are all await to lock IDs for testing. */
+
 // Factions
 // (name)
 async function populateFactions(db)
 {
-    db.query(insertFaction, ["Loner"]); // 1
-    db.query(insertFaction, ["Duty"]); // 2
-    db.query(insertFaction, ["Freedom"]); // 3
-    db.query(insertFaction, ["Clear Sky"]); // 4
-    db.query(insertFaction, ["Monolith"]); // 5
+    await db.query(insertFaction, ["Loner"]); // 1
+    await db.query(insertFaction, ["Duty"]); // 2
+    await db.query(insertFaction, ["Freedom"]); // 3
+    await db.query(insertFaction, ["Clear Sky"]); // 4
+    await db.query(insertFaction, ["Monolith"]); // 5
 }
 
 // Locations
 // (name)
-function populateLocations(db)
+async function populateLocations(db)
 {
-    db.query(insertLocation, ["100 Rads Bar"]); // 1
-    db.query(insertLocation, ["Skadovsk"]); // 2
-    db.query(insertLocation, ["Rookie Village"]); // 3
-    db.query(insertLocation, ["Labs (Underground)"]); // 4
-    db.query(insertLocation, ["Swamps"]); // 5
-    db.query(insertLocation, ["CNPP"]); // 6
-    db.query(insertLocation, ["Pripyat"]); // 7
+    await db.query(insertLocation, ["100 Rads Bar"]); // 1
+    await db.query(insertLocation, ["Skadovsk"]); // 2
+    await db.query(insertLocation, ["Rookie Village"]); // 3
+    await db.query(insertLocation, ["Labs (Underground)"]); // 4
+    await db.query(insertLocation, ["Swamps"]); // 5
+    await db.query(insertLocation, ["CNPP"]); // 6
+    await db.query(insertLocation, ["Pripyat"]); // 7
 
 }
 
 // Users
 // (name, rank, factionID, locationID)
-function populateUsers(db)
+async function populateUsers(db)
 {
-    db.query(insertUser, ["Vanderlust", "Veteran", 2, 1]); // 1
-    db.query(insertUser, ["Cera Chornobyl", "Master", 1, 2]); // 2
-    db.query(insertUser, ["Artyom Truthseeker", "Rookie", 3, 3]); // 3
-    db.query(insertUser, ["Strelok", "Master", 1, 9]); // 4
-    db.query(insertUser, ["Charon", "Master", 5, 7]); // 5
-    db.query(insertUser, ["Sidorovich", "Trader", 1, 3]); // 6
-    db.query(insertUser, ["Wollivan", "Novice", 1, 5]); // 7
+    await db.query(insertUser, ["Vanderlust", "Veteran", 2, 1]); // 1
+    await db.query(insertUser, ["Cera Chornobyl", "Master", 1, 2]); // 2
+    await db.query(insertUser, ["Artyom Truthseeker", "Rookie", 3, 3]); // 3
+    await db.query(insertUser, ["Strelok", "Master", 1, 6]); // 4
+    await db.query(insertUser, ["Charon", "Master", 5, 7]); // 5
+    await db.query(insertUser, ["Sidorovich", "Trader", 1, 3]); // 6
+    await db.query(insertUser, ["Wollivan", "Novice", 1, 5]); // 7
 
+}
+
+// Tags
+// (name)
+async function populateTags(db)
+{
+    await db.query(insertTag, ["Recruitment"]); // 1
+    await db.query(insertTag, ["Personal"]); // 2
+    await db.query(insertTag, ["Advice"]); // 3
+    await db.query(insertTag, ["Buying"]); // 4
 }
 
 // Posts
 // (header, content, tag, user_id)
-function populatePosts(db)
+async function populatePosts(db)
 {
     // 1
-db.query(insertPost, [
+await db.query(insertPost, [
 "Praise the Monolith!", 
 "ALL HAIL THE MONOLITH! ALL HAIL THE MONOLITH! ALL HAIL THE MONOLITH! ALL HAIL THE MONOLITH! ALL HAIL THE MONOLITH! ALL HAIL THE MONOLITH! ALL HAIL THE MONOLITH! ALL HAIL THE MONOLITH! ALL HAIL THE MONOLITH! ALL HAIL THE MONOLITH! ALL HAIL THE MONOLITH!",
-"Recruitment",
+1,
 5
 ]);
 
 // 2
-db.query(insertPost, [
+await db.query(insertPost, [
 "Day 67: Still surviving!", 
 "Phew, its day 67 and I'm still going! My armour has a few holes in it, I'm low on ammo and I'm pretty sure my pee is going to glow in the dark, but I'm alive. That's all we can ask for in the Zone.",
-"Personal",
+2,
 2
 ]);
 
 // 3
-db.query(insertPost, [
+await db.query(insertPost, [
 "Buying: 12g Slugs", 
 "I'm buying 12g Slugs in bulk for a trek out of the village. I don't have many roubles, but I have plenty of vodka to trade. Drop me a message in the comments. - KR, Artyom.",
-"Buying",
+4,
 3
 ]);
 
 // 4
-db.query(insertPost, [
+await db.query(insertPost, [
 "New to the Zone!",
 "Hi guys, I'm new to the Zone! Does anyone have any tips? Also, is it normal to feel your brain tingle and hear a strange rock talking to you in your dreams?",
-"Advice",
+3,
 7
 ]);
 }
@@ -128,9 +139,9 @@ function populateComments(db)
 }
 */
 
-function DEBUG_nukeDB(db)
+async function DEBUG_nukeDB(db)
 {
-    db.query(deleteAllRecordsInAllTables);
+    await db.query(deleteAllRecordsInAllTables);
 }
 // #endregion Seeding
 /*******************/
