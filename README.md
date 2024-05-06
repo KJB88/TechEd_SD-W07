@@ -6,6 +6,8 @@
   <p>
     Repository for coursework for TechEd Software Development Bootcamp - Week 07
   </p>
+  <a href="https://teched-sd-w07-client.onrender.com">Client</a>
+    <a href="https://teched-sd-w07-server.onrender.com">Server</a>
 </div>
 <section>
   <h2>📋 Project Outline</h2>
