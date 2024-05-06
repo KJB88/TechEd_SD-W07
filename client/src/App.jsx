@@ -1,9 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./css/core.css";
 import "./css/common.css";
-import "./css/header.css";
 import "./css/bodyMain.css";
-import Nav from "./Nav.jsx";
+import Header from "./Header";
 
 export default function App() {
   return (
@@ -11,18 +10,7 @@ export default function App() {
       <BrowserRouter>
         <div id="background-image">
           <div id="foreground">
-            <header>
-              <div id="title-container">
-                <h1 id="title" className="drop-shadow no-pointer-events">
-                  Zone PDA Network
-                </h1>
-                <span id="subtitle" className="drop-shadow no-pointer-events">
-                  &quot;Good hunting, Stalker!&quot;
-                </span>
-              </div>
-              <Nav />
-            </header>
-
+            <Header />
             <main>
               <div id="main-div">
                 <div id="tab-div">

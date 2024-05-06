@@ -1,5 +1,5 @@
 const api = "localhost:8080/";
-export const GET_ALL_USERS = "users?all";
+export const GET_ALL_USERS = "users";
 
 export async function getAll(request, successCallback, failureCallback)
 {

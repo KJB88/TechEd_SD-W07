@@ -2,10 +2,10 @@
 /*******************/
 // #region Imports
 // Inserts
-import { insertFaction, insertLocation, insertPost, insertTag, insertUser } from "./queries.js";
+import {createFactionsTable, createLocationsTable, createPostsTable, createTagsTable, createUsersTable, insertFaction, insertLocation, insertPost, insertTag, insertUser } from "./queries.js";
 
 // Deletes
-import { deleteAllRecordsInAllTables } from "./queries.js";
+import { dropAllTables } from "./queries.js";
 
 // #endregion Imports
 /*******************/
@@ -14,9 +14,12 @@ import { deleteAllRecordsInAllTables } from "./queries.js";
 // Populate the DB with seed data
 export default async function seedFullDB(db)
 {
-    // DEBUG - Erases all records in all tables but keeps schema
+    // DEBUG - Nukes DB
     await DEBUG_nukeDB(db);
 
+    // Create tables
+    await createTables(db);    
+    
     // Non-dependent tables (Order does not matter)
     await populateTags(db);
     await populateFactions(db);
@@ -30,6 +33,15 @@ export default async function seedFullDB(db)
 /* Individual Seed Functions 
 NOTE: They are all await to lock IDs for testing. */
 
+// Create Tables
+async function createTables(db)
+{
+    await db.query(createFactionsTable);
+    await db.query(createLocationsTable);
+    await db.query(createTagsTable);
+    await db.query(createUsersTable);
+    await db.query(createPostsTable);
+}
 // Factions
 // (name)
 async function populateFactions(db)
@@ -141,7 +153,7 @@ function populateComments(db)
 
 async function DEBUG_nukeDB(db)
 {
-    await db.query(deleteAllRecordsInAllTables);
+    await db.query(dropAllTables);
 }
 // #endregion Seeding
 /*******************/
